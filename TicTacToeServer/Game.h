@@ -11,7 +11,7 @@ private:
 	Player* xPlayer;
 	Player* oPlayer;
 	bool isXTurn;
-	char gameBoard[ROWS][COLS];
+	char** gameBoard;
 	
 	//methods
 	void changeTurn();
@@ -21,7 +21,7 @@ public:
 	Game(string xName, string oName);
 	
 	//getters
-	char* getBoard();
+	char** getBoard();
 	bool getTurn();
 
 	//methods
