@@ -1,8 +1,7 @@
 #pragma once
 #include "Player.h"
 
-#define ROWS 3
-#define COLS 3
+#define GRIDSIZE 3
 
 class Game
 {
@@ -25,6 +24,6 @@ public:
 	bool getTurn();
 
 	//methods
-	bool checkWin();
+	bool checkWin(char side);
 	void playTurn();
 };

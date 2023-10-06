@@ -3,6 +3,7 @@
 
 using std::string;
 
+//NOTE: please use those as types/side/etc.
 const char x = 'X';
 const char o = 'O';
 
