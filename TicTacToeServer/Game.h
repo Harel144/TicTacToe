@@ -7,17 +7,24 @@
 class Game
 {
 private:
-	Player xPlayer;
-	Player oPlayer;
+	//fields
+	Player* xPlayer;
+	Player* oPlayer;
 	bool isXTurn;
 	char gameBoard[ROWS][COLS];
 	
-	bool changeTurn();
+	//methods
+	void changeTurn();
 
 public:
-	Game();
-	bool checkWin();
-	void playTurn();
+	//constructors
+	Game(string xName, string oName);
+	
+	//getters
 	char* getBoard();
 	bool getTurn();
+
+	//methods
+	bool checkWin();
+	void playTurn();
 };
