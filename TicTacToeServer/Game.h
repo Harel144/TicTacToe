@@ -15,7 +15,7 @@ private:
 	
 	//methods
 	void changeTurn();
-
+	bool placeOnBoard(int location, char sign);
 public:
 	//constructors
 	Game(string xName, string oName);
