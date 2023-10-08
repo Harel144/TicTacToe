@@ -116,8 +116,34 @@ bool Game::checkWin(char side)
 	return winOnDiagonalFlag;
 }
 
+/*
+this function places the sign on the board.
+input: location to place the sign at, the sign.
+output: true if the sign was placed successfully and false otherwise.
+*/
+bool Game::placeOnBoard(int location, char sign)
+{
+	int row = location / GRIDSIZE;
+	int col = location % GRIDSIZE;
 
-//need to be changed to return void/packet struct in the future to return a packet.
+	if (this->gameBoard[row][col] != '\0')
+	{
+		this->gameBoard[row][col] = sign;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+/*
+this function is playing 1 turn of the game. 
+input: location to put a sign on (range is 0 to (GRIDSIZE - 1).
+output:
+
+NOTE: need to be changed to return void/packet struct in the future to return a packet.
+*/
 bool Game::playTurn(int location)
 {
 	//out of range. range is 0 to (GRIDSIZE - 1)
