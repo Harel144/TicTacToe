@@ -26,5 +26,5 @@ public:
 
 	//methods
 	bool checkWin(char side);
-	void playTurn();
+	bool playTurn(int location);
 };

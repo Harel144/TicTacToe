@@ -117,7 +117,35 @@ bool Game::checkWin(char side)
 }
 
 
-void playTurn()
+//need to be changed to return void/packet struct in the future to return a packet.
+bool Game::playTurn(int location)
 {
-	
+	//out of range. range is 0 to (GRIDSIZE - 1)
+	if ((location >= GRIDSIZE * GRIDSIZE) || (location < 0))
+	{
+		return false;
+	}
+
+	if (this->isXTurn)
+	{
+		if (this->placeOnBoard(location, x))
+		{
+			//change with a matching packet in the future.
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	if (this->placeOnBoard(location, o))
+	{
+		//change with a matching packet in the future.
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
