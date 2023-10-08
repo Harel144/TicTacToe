@@ -54,10 +54,17 @@ output: true or false.
 */
 bool Game::checkWin(char side)
 {
+
 	//check rows.
 	for (int i = 0; i < GRIDSIZE; i++)
 	{
-		if (strcmp(this->gameBoard[i], std::string(GRIDSIZE, side).c_str()))
+		std::string a;
+		for (int j = 0; j < GRIDSIZE; j++)
+		{
+			a += this->gameBoard[i][j];
+		}
+
+		if (a.compare(std::string(GRIDSIZE, side)) == 0)
 		{
 			return true;
 		}
@@ -70,16 +77,21 @@ bool Game::checkWin(char side)
 	{
 		if (this->gameBoard[i][i] != side)
 		{
-			winOnDiagonalFlag == false;
+			winOnDiagonalFlag = false;
 			i = GRIDSIZE;
 		}
+	}
+
+	if (winOnDiagonalFlag)
+	{
+		return winOnDiagonalFlag;
 	}
 
 	for (int i = GRIDSIZE - 1; i >= 0; i--)
 	{
 		if (this->gameBoard[GRIDSIZE - 1 - i][i] != side)
 		{
-			winOnDiagonalFlag == false;
+			winOnDiagonalFlag = false;
 			i = -1;
 		}
 	}
@@ -103,6 +115,7 @@ bool Game::checkWin(char side)
 
 	return winOnDiagonalFlag;
 }
+
 
 void playTurn()
 {

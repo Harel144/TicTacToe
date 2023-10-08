@@ -1,5 +1,6 @@
 #pragma once
 #include "Player.h"
+#include <cstring>
 
 #define GRIDSIZE 3
 
