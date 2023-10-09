@@ -11,7 +11,7 @@ int main(void)
 	std::string secondName;
 	std::cin >> secondName;
 
-	Game newGame(firstName, secondName);
+	Game* newGame = new Game(firstName, secondName);
 	
 
 	return 0;
