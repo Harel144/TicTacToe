@@ -12,7 +12,7 @@ Game::Game(string xName, string oName)
 		this->gameBoard[i] = new char[GRIDSIZE];
 		for (int j = 0; j < GRIDSIZE; j++)
 		{
-			this->gameBoard[i][j] = '\0';
+			this->gameBoard[i][j] = PLACEHOLDER;
 		}
 	}
 	this->isXTurn = true;
@@ -87,6 +87,9 @@ bool Game::checkWin(char side)
 		return winOnDiagonalFlag;
 	}
 
+	//checking the second diagonal.
+	winOnDiagonalFlag = true;
+
 	for (int i = GRIDSIZE - 1; i >= 0; i--)
 	{
 		if (this->gameBoard[GRIDSIZE - 1 - i][i] != side)
@@ -99,18 +102,21 @@ bool Game::checkWin(char side)
 	//in case of Diagonal win, check columns is useless.
 	if (!winOnDiagonalFlag)
 	{
-		//check columns.
-		bool winColumnsFlag = true;
-
 		for (int i = 0; i < GRIDSIZE; i++)
 		{
-			if (this->gameBoard[i][0] != side)
+			std::string a;
+			for (int j = 0; j < GRIDSIZE; j++)
 			{
-				winColumnsFlag = false;
-				i = GRIDSIZE;
+				a += this->gameBoard[j][i];
+			}
+
+			if (a.compare(std::string(GRIDSIZE, side)) == 0)
+			{
+				return true;
 			}
 		}
-		return winColumnsFlag;
+
+		return false;
 	}
 
 	return winOnDiagonalFlag;
@@ -126,7 +132,7 @@ bool Game::placeOnBoard(int location, char sign)
 	int row = location / GRIDSIZE;
 	int col = location % GRIDSIZE;
 
-	if (this->gameBoard[row][col] != '\0')
+	if (this->gameBoard[row][col] == PLACEHOLDER)
 	{
 		this->gameBoard[row][col] = sign;
 		return true;
@@ -157,6 +163,7 @@ bool Game::playTurn(int location)
 		if (this->placeOnBoard(location, x))
 		{
 			//change with a matching packet in the future.
+			this->changeTurn();
 			return true;
 		}
 		else
@@ -168,6 +175,7 @@ bool Game::playTurn(int location)
 	if (this->placeOnBoard(location, o))
 	{
 		//change with a matching packet in the future.
+		this->changeTurn();
 		return true;
 	}
 	else
@@ -178,12 +186,37 @@ bool Game::playTurn(int location)
 
 void Game::printBoard()
 {
+	std::string line(GRIDSIZE * 2, '-');
+	std::cout << std::endl << line << std::endl;
+
 	for (int i = 0; i < GRIDSIZE; i++)
 	{
 		for (int j = 0; j < GRIDSIZE; j++)
 		{
-			std::cout << this->gameBoard[i][j] + " ";
+			if (j == GRIDSIZE - 1)
+			{
+				if (this->gameBoard[i][j] == PLACEHOLDER)
+				{
+					std::cout << " ";
+				}
+				else
+				{
+					std::cout << this->gameBoard[i][j] << " ";
+				}
+			}
+			else
+			{
+				if (this->gameBoard[i][j] == PLACEHOLDER)
+				{
+					std::cout << " |";
+				}
+				else
+				{
+					std::cout << this->gameBoard[i][j] << "|";
+				}
+			}
 		}
-		std::cout << std::endl;
+		std::cout << std::endl << line << std::endl;
 	}
+
 }

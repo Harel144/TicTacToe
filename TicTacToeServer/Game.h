@@ -4,6 +4,7 @@
 #include <iostream>
 
 #define GRIDSIZE 3
+#define PLACEHOLDER '.'
 
 class Game
 {
