@@ -21,8 +21,8 @@ Game::Game(string xName, string oName)
 
 char** Game::getBoard()
 {
-	
-	char** b = new char*[GRIDSIZE];
+
+	char** b = new char* [GRIDSIZE];
 
 	for (int x = 0; x < GRIDSIZE; x++)
 	{
@@ -33,7 +33,7 @@ char** Game::getBoard()
 		}
 	}
 	return b;
-	
+
 }
 
 bool Game::getTurn()
@@ -138,7 +138,7 @@ bool Game::placeOnBoard(int location, char sign)
 }
 
 /*
-this function is playing 1 turn of the game. 
+this function is playing 1 turn of the game.
 input: location to put a sign on (range is 0 to (GRIDSIZE - 1).
 output:
 
@@ -173,5 +173,17 @@ bool Game::playTurn(int location)
 	else
 	{
 		return false;
+	}
+}
+
+void Game::printBoard()
+{
+	for (int i = 0; i < GRIDSIZE; i++)
+	{
+		for (int j = 0; j < GRIDSIZE; j++)
+		{
+			std::cout << this->gameBoard[i][j] + " ";
+		}
+		std::cout << std::endl;
 	}
 }
