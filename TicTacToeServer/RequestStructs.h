@@ -14,7 +14,7 @@ struct JoinLobby
 	std::string playerName;
 };
 
-struct startGame
+struct StartGame
 {
 	std::string lobbyName;
 };
