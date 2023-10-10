@@ -5,17 +5,21 @@ struct CreateLobby
 {
 	std::string lobbyName;
 	int gridSize;
+	std::string ownerName;
 };
 
 struct JoinLobby
 {
 	std::string lobbyName;
+	std::string playerName;
 };
 
-struct SendTurnData
+struct startGame
 {
-	bool xWon;
-	bool oWon;
-	char** gameBoard;
-	bool isXTurn;
+	std::string lobbyName;
+};
+
+struct CreateAccount
+{
+	std::string name;
 };
