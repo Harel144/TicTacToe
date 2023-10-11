@@ -1,25 +1,25 @@
 #pragma once
 #include <string>
 
-struct CreateLobby
+typedef struct CreateLobbyRequest
 {
 	std::string lobbyName;
 	int gridSize;
 	std::string ownerName;
-};
+} CreateLobbyRequest;
 
-struct JoinLobby
+typedef struct JoinLobbyRequest
 {
 	std::string lobbyName;
 	std::string playerName;
-};
+} JoinLobbyRequest;
 
-struct StartGame
+typedef struct StartGameRequest
 {
 	std::string lobbyName;
-};
+} StartGameRequest;
 
-struct CreateAccount
+typedef struct CreateAccountRequest
 {
 	std::string name;
-};
+} CreateAccountRequest;
