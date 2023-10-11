@@ -16,5 +16,6 @@ struct RequestInfo
 
 class IRequestHandler
 {
+public:
 	virtual RequestResult handleRequest(RequestInfo info);
 };
